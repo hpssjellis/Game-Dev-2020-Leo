@@ -1,0 +1,99 @@
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script> 
+
+ 
+
+
+<input id="myButton123" type="button" value="Quadratic y = a * x^2 + b * x + c" onclick="{
+                                                                                       
+const a = tf.variable(tf.scalar(Math.random(),'float32'));
+const b = tf.variable(tf.scalar(Math.random(),'float32'));
+const c = tf.variable(tf.scalar(Math.random(),'float32'));
+                                                                                       
+const learningRate = 0.01;
+const optimizer = tf.train.sgd(learningRate);
+                                                                                       
+function predict(input) {
+  // y = a * x ^ 2 + b * x + c
+  return tf.tidy(() => {
+    const x = tf.scalar(input, 'float32');
+    const ax2 = a.mul(x.square());
+    const bx = b.mul(x);
+    const y = ax2.add(bx).add(c);
+    return y;
+  });
+}
+                                                                                       
+                                                                                       
+function loss(prediction, actual) {
+  const error = tf.scalar(actual).sub(prediction).square();
+  return error.asScalar();
+}
+                                                                                       
+                                                                                       
+async function train(xs, ys, numIterations, done) {
+  for (let iter = 0; iter < numIterations; iter++) {
+    for (let i = 0; i < xs.length; i++) {
+     myLoss = 0
+      optimizer.minimize( function(myLoss) {
+        const pred = predict(xs[i]);
+        const predLoss = loss(pred, ys[i])
+
+        if ( i == 0){
+            document.getElementById('myDiv123').innerHTML +=  'Batch #' + iter + ' LOSS = ' + predLoss + '<br>'
+        }
+        return predLoss;
+      });
+    }
+    await tf.nextFrame();
+  }
+  document.getElementById('myButton123').style.backgroundColor = 'green'  
+  done();
+}
+                                                                                       
+                                                                                       
+function test(xs, ys) {
+  tf.tidy(() => {
+     const predictedYs = xs.map(predict);
+   
+    document.getElementById('myDiv123').innerHTML +=  'Expected ' + ys + '<br>Got '+   predictedYs.map(
+       (p) => parseFloat(p.dataSync()[0]).toFixed(3))  +'<br><br>'                                                                                                                                                                
+  })
+}
+                                                                                       
+                                                                                       
+const data = {
+  xs: [0, 1, 2, 3],
+  ys: [1.1, 5.9, 16.8, 33.9]
+};
+
+
+document.getElementById('myButton123').style.backgroundColor = 'red' 
+                                                                                       
+document.getElementById('myDiv123').innerHTML ='Before training: using random coefficients <br>'
+                                                                                       
+test(data.xs, data.ys);  // test before training
+                                                                                       
+train(data.xs, data.ys, 20, () => {
+   document.getElementById('myDiv123').innerHTML += '<br>After Training a = ' + parseFloat(a.dataSync()).toFixed(3) +
+     ' b = '+  parseFloat(b.dataSync()).toFixed(3)+ ' c = ' +  parseFloat(c.dataSync()).toFixed(3) + '<br><br>'
+        
+                                                                                                                                                                           
+  test(data.xs, data.ys);  // test after training
+                                                                                       
+   document.getElementById('myDiv123').innerHTML += 'So the final equation is Y = ' + parseFloat(a.dataSync()).toFixed(3) +
+     '*X^2 + '+  parseFloat(b.dataSync()).toFixed(3)+ '*X + ' +  parseFloat(c.dataSync()).toFixed(3) + '<br><br>'
+  document.getElementById('myDiv123').innerHTML += 'Trying for x the value 4<br>'
+   
+const data2 = {
+      xs: [4],
+      ys: [57]
+   };
+                                                                                       
+test(data2.xs, data2.ys);  // test the unknown after training
+                                                                                                                                                                        
+});
+                                                             
+                                                                            
+}" style="background-color: green;"><br>
+
+<div id='myDiv123'>...</div><br>

@@ -1,0 +1,14 @@
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script> 
+
+ 
+
+<input id="myButton1234" type="button" value="Use GPU math" onclick="{
+                                                                                                                                 
+  const myA = tf.tensor1d([10,20,30], 'int32')
+  const myB = tf.scalar(2.1, 'float32')
+  const myResult = tf.add(myA, myB);
+  document.getElementById('myDiv1234').innerHTML = myResult.dataSync() 
+                                                                 
+}"><br><br>
+
+<div id='myDiv1234'>...</div><br>

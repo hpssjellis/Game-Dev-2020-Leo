@@ -1,0 +1,19 @@
+<h1 align=center>T3A07 Decisions By Leo</h1>
+
+<input id="myText01" type=text value="5">
+
+<input type="button" value="decision" onClick="{
+	
+if (document.getElementById('myText01').value == 5){
+	document.getElementById('myDiv01').innerHTML += '<br>x=5, equals to: '+document.getElementById('myText01').value 
+
+} else if (document.getElementById('myText01').value < 5){
+	document.getElementById('myDiv01').innerHTML += '<br>x<5, input equals to: '+document.getElementById('myText01').value
+
+} else {
+	document.getElementById('myDiv01').innerHTML += '<br>x>5, input equals to: '+document.getElementById('myText01').value
+}
+
+}">
+
+<div id="myDiv01">...</div>

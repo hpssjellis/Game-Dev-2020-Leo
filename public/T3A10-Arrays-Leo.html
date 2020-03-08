@@ -1,0 +1,44 @@
+<h1 align=center>T3A10-Arrays-Leo</h1>
+
+<script>
+
+myArray = new Array(20)
+myArray[0] = 'Leo'
+myArray2 = Array(20)
+</script>
+
+<input type=text id=myText01 value=Lee><br>
+<input type=text id=myText02 value=Kim><br>
+<input type=text id=myText03 value=Park><br>
+<input type=text id=myText04 value=Jung><br>
+<input type=button value="Array Set" onclick="{
+	document.getElementById('myDiv01').innerHTML = 'Array has been set'
+	myArray[0] = document.getElementById('myText01').value
+	myArray[1] = document.getElementById('myText02').value
+	myArray[2] = document.getElementById('myText03').value
+	myArray[3] = document.getElementById('myText04').value
+}">
+<input type=button value="Array Show" onclick="{
+      document.getElementById('myDiv01').innerHTML = ' '
+	for(x=0; x<=3; x++){
+		document.getElementById('myDiv01').innerHTML += 'myArray[' + x + '] = ' + myArray[x] + '<br>'
+}
+}"><br>
+
+<div id=myDiv01>...</div>
+
+<hr>
+<br>
+<input type=text id=myText05><input type=number min=0 max=20 id=myNumber><input type=button value=Enter onclick="{
+	myArray2[document.getElementById('myNumber').value] = document.getElementById('myText05').value
+		
+}"><br>
+<input type=button value=Show onclick="{
+document.getElementById('myDiv02').innerHTML = ' '
+			for(myLoop=0; myLoop<=20; myLoop++){
+				document.getElementById('myDiv02').innerHTML += 'myArray2[' + myLoop + '] = ' + myArray2[myLoop] + '<br>'
+}
+}">
+<div id=myDiv02>...</div>
+
+

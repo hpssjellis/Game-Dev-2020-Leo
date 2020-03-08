@@ -1,0 +1,31 @@
+<h1 align=center>T3A09-Variables-Leo</h1>
+
+<script>
+var myX=3
+let myY=67.4
+let myFirstName='Leo'
+let myLastName='Lee'
+let myAge=18
+let myMom='Kate'
+let myDog='Mozi'
+let myCat='Lang'
+let myFriend='Michael'
+let myGrade=12
+document.writeln('My myX Variable is ' + myX + '<br>') 
+document.writeln('My myY Variable is ' + myY + '<br>')
+document.writeln('My myFirstName Variable is ' + myFirstName + '<br>')
+document.writeln('My myLastName Variable is ' + myLastName + '<br>')
+document.writeln('My myAge Variable is ' + myAge + '<br>')
+document.writeln('My myMom Variable is ' + myMom + '<br>')
+document.writeln('My myDog Variable is ' + myDog + '<br>')
+document.writeln('My myCat Variable is ' + myCat + '<br>')
+document.writeln('My myFriend Variable is ' + myFriend + '<br>')
+document.writeln('My myGrade Variable is ' + myGrade + '<br>')
+</script>
+<hr>
+
+<input type=text placeholder='Enter Something' id=myText01>
+<input type=button value='Set Variable' onclick="{
+	let x = document.getElementById('myText01').value
+ 	document.writeln('My x variable is ' + x ) 
+}">

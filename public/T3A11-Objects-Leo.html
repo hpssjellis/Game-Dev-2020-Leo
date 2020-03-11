@@ -1,0 +1,29 @@
+	<h1 align=center>T3A11 Objects-Leo</h1>
+
+<input type = text id= myText01 value= Leo>
+<input type = button value = "Show Object" onclick="{
+myObject = {
+   'myName' : document.getElementById('myText01').value,
+   'myAge' : '18',
+   'myNationality' : 'South Korea',
+   'myCat' : 'Lang',
+   'myFriend' : 'Michael',
+}
+
+   document.getElementById('myDiv01').innerHTML = '<br>Age : ' + myObject.myAge + '<br> Name : ' + myObject.myName + '<br> Nationality : ' +myObject.myNationality + '<br> Cat : ' +myObject.myCat + '<br> Friend : ' +myObject.myFriend
+}">
+
+<div id="myDiv01"></div>
+
+<br><br>
+
+<input type = button value = "Show Array" onclick="{
+
+let myAoO = {height : '175cm',
+    firstname : 'Leo', lastname : 'Lee',
+    eyeColour : 'black', hairColour : 'black', weight : '65kg'}
+
+   document.getElementById('myDiv02').innerHTML = '<br><b>FirstName :</b> '+myAoO.firstname + ', <b>Last Name :</b> '+myAoO.lastname + '<br><b>Eye Colour :</b> '+myAoO.eyeColour + ', <b>Hair Colour :</b> '+ myAoO.hairColour +'<br><b>Height :</b> '+myAoO.height + ', <b>Weight :</b> '+myAoO.weight
+}">
+
+<div id="myDiv02"></div>
